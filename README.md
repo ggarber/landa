@@ -1,5 +1,4 @@
-landa
-=====
+# landa
 
 C++ concurrency library based on Actor pattern and C++11 features.
 
@@ -8,7 +7,10 @@ The library offers a framework to create entities (Actors) that can potentially 
 The Actor pattern is available in other languages like Erlang or Scala and simplifies the development of highly concurrent applications:
 http://www.slideshare.net/drorbr/the-actor-model-towards-better-concurrency
 
-Instead of using messages and pattern matching like in other languages, the messages in landa are callable objects.
+There are other actor model frameworks for C++ but it is always fun to create your own implementation and then compare it with other solutions:
+http://en.wikipedia.org/wiki/Actor_model#Actor_libraries_and_frameworks
+
+Instead of using messages and pattern matching like in other languages, the messages in landa are callable objects (std::function, lambda, function object).   It gives probably too much flexibility allowing requesting an actor to execute code in other actor but it is a very simple solution and fits great with C++11 lambdas/closures.
 
 The library is under development but already usable with an initial implementation of executor distributing load by sharding actors.   This is an example of usage with two actors running in parallel and receiving a message (one from the main application, and the other from the other actor):
 
@@ -53,4 +55,10 @@ int main() {
 ```
 
 Use any callable object (lambda function, object redefining operator()...) for messaging passing.
+
+# Next Steps
+
+* Evaluate other executors based on shared queue between threads (initial tests shows it is slower at least for some scenarios).
+* Add unit tests and documentation
+* Fool somebody to use it in any real project
 
