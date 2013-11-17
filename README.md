@@ -54,7 +54,11 @@ int main() {
 
 ```
 
-Use any callable object (lambda function, object redefining operator()...) for messaging passing.
+# Build
+
+* clone the repo
+* mkdir build; cd build; cmake ..; make
+* ./LandaTest
 
 # Next Steps
 
