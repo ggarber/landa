@@ -1,5 +1,4 @@
 #include <vector>
-#include <thread>
 
 namespace landa {
 
@@ -19,16 +18,20 @@ class BasicExecutor: public Executor {
   	virtual void Schedule(Actor& actor);
 };
 
+class ThreadPoolThread;
 class ThreadPoolExecutor: public Executor {
   public:
   	ThreadPoolExecutor(size_t count);
+  	~ThreadPoolExecutor();
+
+  	void Stop();
+    void Join();
+
   	virtual void Schedule(Actor& actor);
 
   private:
-  	static void Run();
-
-  private:
-  	std::vector<std::thread> threads_;
+  	size_t count_;
+  	std::vector<ThreadPoolThread*> threads_;
 };
 
 };
